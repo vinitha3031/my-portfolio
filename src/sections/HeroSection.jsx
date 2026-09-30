@@ -166,13 +166,13 @@ export default function HeroSection({ profile }) {
 
           <div className="relative z-10 h-[470px] w-[470px]">
             <img
-              src="/avatar-base.png"
+              src={`${import.meta.env.BASE_URL}avatar-base.png`}
               alt="Vinitha G Developer Avatar"
               className="absolute inset-0 h-full w-full object-contain"
             />
 
             <motion.img
-              src="/avatar-eyes.png"
+              src={`${import.meta.env.BASE_URL}avatar-eyes.png`}
               alt=""
               aria-hidden="true"
               style={{

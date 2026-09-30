@@ -55,7 +55,7 @@ journeyItems:[
     description: 'Interested in connecting or discussing a Web Developer opportunity? Feel free to reach out.',
   },
   email: 'vinithagopi31@gmail.com',
-  resumeUrl: '/Resume-Vinitha G.pdf',
+  resumeUrl: `${import.meta.env.BASE_URL}Resume-Vinitha G.pdf`,
   github: 'https://github.com/vinitha3031',
   linkedin: 'https://www.linkedin.com/in/vinitha-gopi/',
   navItems: [
