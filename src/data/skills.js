@@ -22,7 +22,6 @@ export const techStackSection = {
 
 export const techStack = [
   { name: 'MySQL', icon: 'Database' },
-  { name: 'MongoDB', icon: 'Database' },
   { name: 'Flask', icon: 'Server' },
   { name: 'Git', icon: 'GitBranch' },
   { name: 'GitHub', icon: 'Github' },

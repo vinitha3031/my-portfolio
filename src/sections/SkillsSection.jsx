@@ -27,7 +27,7 @@ export default function SkillsSection({ skills, sectionContent }) {
         <SectionHeading title={sectionContent.title} description={sectionContent.description} />
 
         <motion.div
-          className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
+          className="mt-12 grid grid-cols-2 gap-4 lg:grid-cols-3"
           variants={containerVariants}
           initial="hidden"
           whileInView="show"

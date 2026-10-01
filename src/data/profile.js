@@ -9,7 +9,7 @@ export const profile = {
 aboutSection: {
   title: 'My Journey',
   description:
-  'My academic journey and the projects I explored along the way. From school to engineering, each milestone represents a step in developing my skills and discovering my interests in technology.',
+  'My academic journey from school to engineering, building the foundation for my skills and career in web development.',
 journeyItems:[
   {
     period: '2019 – 2020',
@@ -33,21 +33,12 @@ journeyItems:[
     type: 'Education',
   },
   {
-    period: '2023 – 2024',
-    title: 'College Enquiry Chatbot',
-    subtitle: 'Academic Project',
-    detail:
-      'AI-driven system for answering questions about admissions, courses, campus facilities, events, and other college information.',
-    type: 'Academic Project',
-  },
-  {
-    period: '2024 – 2025',
-    title: 'AI-Powered Indian Stock Market Analyzer',
-    subtitle: 'Academic Project',
-    detail:
-      'Web-based platform using AI and ML to analyze real-time stock data, predict market trends, and provide personalized portfolio insights.',
-    type: 'Academic Project',
-  },
+  period: '2026',
+  title: 'Graduation & Career Beginning',
+  subtitle: 'B.E. Computer Science and Engineering',
+  detail: 'Completed my degree and began my journey toward a career in web development.',
+  type: 'Career',
+}
 ],
 },
   contactSection: {

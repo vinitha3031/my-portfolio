@@ -1,77 +1,11 @@
 import Reveal from '../components/Reveal'
 import SectionHeading from '../components/SectionHeading'
-import { useEffect, useState } from 'react'
-import { Bot, ChartNoAxesCombined, GraduationCap } from 'lucide-react'
+import { GraduationCap } from 'lucide-react'
 import { motion } from 'framer-motion'
 
 export default function AboutSection({ profile }) {
-  const [currentIndex, setCurrentIndex] = useState(1)
-  const [isPaused, setIsPaused] = useState(false)
-
-  useEffect(() => {
-  if (isPaused) return
-
-  const timer = setInterval(() => {
-    setCurrentIndex((prevIndex) =>
-      (prevIndex + 1) % profile.aboutSection.journeyItems.length
-    )
-  }, 3000)
-
-  return () => clearInterval(timer)
-}, [isPaused,profile.aboutSection.journeyItems.length])
-
-  const getCardPosition = (index) => {
-    const total = profile.aboutSection.journeyItems.length
-    const diff = (index - currentIndex + total) % total
-
-    if (diff === 0) return 'center'
-    if (diff === 1) return 'right'
-    if (diff === total - 1) return 'left'
-
-    return 'hidden'
-  }
-
-  const variants = {
-  left: {
-    x: '-105%',
-    scale: 0.85,
-    opacity: 0.4,
-    zIndex: 10,
-    boxShadow: '0 0 0 rgba(34, 211, 238, 0)',
-    borderColor: 'rgba(255, 255, 255, 0.08)',
-  },
-
-  center: {
-  x: '0%',
-  scale: 1.05,
-  opacity: 1,
-  zIndex: 30,
-  boxShadow:
-    '0 0 30px rgba(34, 211, 238, 0.16), 0 0 55px rgba(168, 85, 247, 0.18), 0 0 90px rgba(99, 102, 241, 0.10)',
-  borderColor: 'rgba(129, 140, 248, 0.5)',
-},
-
-  right: {
-    x: '105%',
-    scale: 0.85,
-    opacity: 0.4,
-    zIndex: 10,
-    boxShadow: '0 0 0 rgba(34, 211, 238, 0)',
-    borderColor: 'rgba(255, 255, 255, 0.08)',
-  },
-
-  hidden: {
-    x: '0%',
-    scale: 0.7,
-    opacity: 0,
-    zIndex: 0,
-    boxShadow: '0 0 0 rgba(34, 211, 238, 0)',
-    borderColor: 'rgba(255, 255, 255, 0.08)',
-  },
-}
-
   return (
-    <section id="journey" className="section-shell">
+    <section id="journey" className="section-shell scroll-mt-24">
       <div className="container-shell">
 
         <SectionHeading
@@ -80,83 +14,70 @@ export default function AboutSection({ profile }) {
         />
 
         <Reveal>
-          <div
-  className="relative mx-auto mt-12 h-[360px] w-full max-w-5xl overflow-hidden"
-  onMouseEnter={() => setIsPaused(true)}
-  onMouseLeave={() => setIsPaused(false)}
+  <div className="relative mx-auto mt-12 max-w-4xl">
+    <div className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-gradient-to-b from-cyan-400 via-indigo-400 to-purple-400" />
+
+    <div className="space-y-12">
+  {profile.aboutSection.journeyItems.map((item, index) => (
+    <motion.div
+      key={item.title}
+      initial={{
+        opacity: 0,
+        x: index % 2 === 0 ? -50 : 50,
+      }}
+      whileInView={{
+        opacity: 1,
+        x: 0,
+      }}
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{
+        duration: 0.6,
+        delay: index * 0.15,
+      }}
+      className={`relative flex items-center ${
+        index % 2 === 0 ? 'justify-start' : 'justify-end'
+      }`}
+    >
+      <motion.div
+  whileHover={{
+    y: -6,
+    scale: 1.02,
+  }}
+  transition={{
+    type: 'spring',
+    stiffness: 300,
+    damping: 20,
+  }}
+  className={`w-[45%] rounded-2xl border border-white/10 bg-slate-900/50 p-5 backdrop-blur-sm transition-colors duration-300 hover:border-cyan-300/40 hover:shadow-[0_0_28px_rgba(34,211,238,0.12)] ${
+    index % 2 === 0 ? 'text-right' : 'text-left'
+  }`}
 >
+        <p className="text-sm text-cyan-200">{item.period}</p>
 
-            {profile.aboutSection.journeyItems.map((item, index) => {
-              const position = getCardPosition(index)
+        <p className="mt-2 text-xs uppercase tracking-[0.18em] text-slate-400">
+          {item.type}
+        </p>
 
-              return (
-                <motion.div
-                  key={item.title}
-                  initial={false}
-                  animate={position}
-                  variants={variants}
-                  transition={{
-                    duration: 0.7,
-                    ease: [0.16, 1, 0.3, 1],
-                  }}
-                  onClick={() => setIsPaused(true)}
-                 className="glass-panel absolute left-1/2 top-1/2 flex h-[280px] w-[300px] -translate-x-1/2 -translate-y-1/2 flex-col rounded-3xl border border-white/10 p-6"
-                >
+        <h3 className="mt-2 text-lg font-semibold text-white">
+          {item.title}
+        </h3>
 
-                  <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-xl bg-white/10">
-                    {item.type === 'Academic Project' ? (
-                      item.title.includes('Stock') ? (
-                        <ChartNoAxesCombined className="h-5 w-5 text-cyan-200" />
-                      ) : (
-                        <Bot className="h-5 w-5 text-cyan-200" />
-                      )
-                    ) : (
-                      <GraduationCap className="h-5 w-5 text-cyan-200" />
-                    )}
-                  </div>
+        <p className="mt-2 text-sm leading-6 text-slate-300">
+          {item.subtitle}
+        </p>
 
-                  <p className="text-sm text-cyan-200">
-                    {item.period}
-                  </p>
+        <p className="mt-3 text-sm text-slate-400">
+          {item.detail}
+        </p>
+      </motion.div>
 
-                  <p className="mt-4 text-xs uppercase tracking-[0.18em] text-slate-400">
-                    {item.type}
-                  </p>
+      <div className="absolute left-1/2 h-4 w-4 -translate-x-1/2 rounded-full border-2 border-cyan-300 bg-slate-950 shadow-[0_0_15px_rgba(34,211,238,0.65)]" />
+    </motion.div>
+  ))}
+</div>
+</div>
+</Reveal>
 
-                  <h3 className="mt-2 text-xl font-semibold text-white">
-                    {item.title}
-                  </h3>
-
-                  <p className="mt-3 text-sm leading-6 text-slate-300">
-                    {item.subtitle}
-                  </p>
-
-                  <p className="mt-5 text-sm text-slate-400">
-                    {item.detail}
-                  </p>
-
-                </motion.div>
-              )
-            })}
-
-          </div>
-        </Reveal>
-
-        {/* Carousel dots */}
-        <div className="mt-6 flex justify-center gap-2">
-          {profile.aboutSection.journeyItems.map((item, index) => (
-            <button
-              key={item.title}
-              onClick={() => setCurrentIndex(index)}
-              aria-label={`Show ${item.title}`}
-              className={`rounded-full transition-all duration-300 ${
-                currentIndex === index
-  ? 'h-2 w-8 bg-gradient-to-r from-cyan-300 to-purple-400 shadow-[0_0_12px_rgba(34,211,238,0.55)]'
-  : 'h-2 w-2 bg-slate-600 hover:bg-slate-400'
-              }`}
-            />
-          ))}
-        </div>
 
       </div>
     </section>

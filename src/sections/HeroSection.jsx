@@ -161,10 +161,10 @@ export default function HeroSection({ profile }) {
         </div>
 
         {/* Avatar */}
-        <div className="relative z-10 h-[480px] w-[480px] translate-y-4">
+        <div className="relative z-10 mx-auto h-[360px] w-[360px] translate-y-4 sm:h-[400px] sm:w-[400px] lg:h-[480px] lg:w-[480px]">
           <div className="absolute h-80 w-80 rounded-full bg-gradient-to-tr from-cyan-400/20 via-indigo-500/20 to-purple-500/20 blur-3xl" />
 
-          <div className="relative z-10 h-[470px] w-[470px]">
+          <div className="relative z-10 h-[350px] w-[350px] sm:h-[390px] sm:w-[390px] lg:h-[470px] lg:w-[470px]">
             <img
               src={`${import.meta.env.BASE_URL}avatar-base.png`}
               alt="Vinitha G Developer Avatar"
