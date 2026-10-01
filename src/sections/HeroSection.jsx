@@ -1,4 +1,4 @@
-import { motion, useMotionValue, useTransform } from 'framer-motion'
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
 import GradientButton from '../components/GradientButton'
 import { getIconByName } from '../components/iconMap'
 
@@ -27,21 +27,31 @@ export default function HeroSection({ profile }) {
   const mouseX = useMotionValue(0)
   const mouseY = useMotionValue(0)
 
-  const handlePointerMove = (event) => {
-  const { innerWidth, innerHeight } = window
-  const x = (event.clientX / innerWidth) * 2 - 1
-  const y = (event.clientY / innerHeight) * 2 - 1
+  const smoothMouseX = useSpring(mouseX, {
+    stiffness: 180,
+    damping: 22,
+  })
 
-  mouseX.set(x)
-  mouseY.set(y)
-}
+  const smoothMouseY = useSpring(mouseY, {
+    stiffness: 180,
+    damping: 22,
+  })
+
+  const handlePointerMove = (event) => {
+    const { innerWidth, innerHeight } = window
+    const x = (event.clientX / innerWidth) * 2 - 1
+    const y = (event.clientY / innerHeight) * 2 - 1
+
+    mouseX.set(x)
+    mouseY.set(y)
+  }
 
   return (
     <section
-  id="home"
-  className="relative isolate overflow-hidden pt-28 sm:pt-32"
-  onPointerMove={handlePointerMove}
->
+      id="home"
+      className="relative isolate overflow-hidden pt-28 sm:pt-32"
+      onPointerMove={handlePointerMove}
+    >
       <motion.div
         aria-hidden="true"
         className="hero-gradient absolute inset-0 -z-20"
@@ -81,7 +91,7 @@ export default function HeroSection({ profile }) {
 
       <div className="container-shell flex flex-col gap-12 py-10 lg:min-h-[calc(100vh-15rem)] lg:flex-row lg:items-center lg:justify-between">
         <div className="max-w-2xl">
-          
+
           <motion.h1
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
@@ -124,13 +134,13 @@ export default function HeroSection({ profile }) {
             </GradientButton>
 
             <GradientButton
-  href={profile.resumeUrl}
-  variant="outline"
-  target="_blank"
-  rel="noreferrer"
->
-  View Resume
-</GradientButton>
+              href={profile.resumeUrl}
+              variant="outline"
+              target="_blank"
+              rel="noreferrer"
+            >
+              View Resume
+            </GradientButton>
           </motion.div>
 
           <motion.div
@@ -161,7 +171,7 @@ export default function HeroSection({ profile }) {
         </div>
 
         {/* Avatar */}
-        <div className="relative z-10 mx-auto h-[360px] w-[360px] translate-y-4 sm:h-[400px] sm:w-[400px] lg:h-[480px] lg:w-[480px]">
+        <div className="relative z-10 mx-auto h-[360px] w-[360px] -translate-x-4 translate-y-4 sm:translate-x-0 sm:h-[400px] sm:w-[400px] lg:h-[480px] lg:w-[480px]">
           <div className="absolute h-80 w-80 rounded-full bg-gradient-to-tr from-cyan-400/20 via-indigo-500/20 to-purple-500/20 blur-3xl" />
 
           <div className="relative z-10 h-[350px] w-[350px] sm:h-[390px] sm:w-[390px] lg:h-[470px] lg:w-[470px]">
@@ -176,8 +186,8 @@ export default function HeroSection({ profile }) {
               alt=""
               aria-hidden="true"
               style={{
-                x: useTransform(mouseX, [-1, 1], [-5, 5]),
-                y: useTransform(mouseY, [-1, 1], [-3, 3]),
+                x: useTransform(smoothMouseX, [-1, 1], [-5, 5]),
+                y: useTransform(smoothMouseY, [-1, 1], [-3, 3]),
               }}
               className="absolute inset-0 h-full w-full object-contain"
             />
