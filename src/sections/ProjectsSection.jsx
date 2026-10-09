@@ -51,6 +51,7 @@ export default function ProjectsSection({ projectItems, sectionContent }) {
               <div className="space-y-4 p-6">
                 <h3 className="text-xl font-semibold text-slate-100">{project.title}</h3>
                 <p className="text-sm text-slate-300">{project.description}</p>
+                <br></br>
                 <div className="flex flex-wrap gap-2">
                   {project.techStack.map((tech) => (
                     <span
