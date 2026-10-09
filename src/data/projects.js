@@ -28,7 +28,7 @@ export const projectItems = [
     title: 'Student Database Management System',
     description:
       'A web-based student database management system built with Flask and MySQL, providing user authentication and database management features.',
-    image: 'StudentDb.png',
+    image: 'StudentDB.png',
     techStack: [
       'Python',
       'Flask',
