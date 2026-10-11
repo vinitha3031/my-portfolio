@@ -8,7 +8,7 @@ export const projectItems = [
   {
     title: 'My Travel Journal',
     description:
-      'A full-stack Travel Journal app with secure authentication and CRUD operations. Users can add, edit, delete, and search travel memories with optional images.',
+      'Built a Travel Journal web app where users can securely add, edit, delete, and search travel memories by city, with optional photos.',
     image: 'travel-journal.png',
     techStack: [
       'HTML',
