@@ -146,7 +146,7 @@ export default function ContactSection({ profile }) {
               </GradientButton>
               {isSubmitted ? (
                 <p className="text-xs text-emerald-300">
-                  Message sent in UI demo mode. Connect this form to your backend.
+                  Message sent.
                 </p>
               ) : null}
             </div>
