@@ -53,6 +53,28 @@ export const projectItems = [
     techStack: ['HTML', 'CSS', 'JavaScript'],
     demoUrl: 'https://vinitha3031.github.io/single-page-website/',
     githubUrl: 'https://github.com/vinitha3031/single-page-website',
-  }
+  },
+
+  
+  {
+    title: 'Cirqua Systems',
+    description:
+      'Designed and developed a responsive corporate website for a water treatment company, focusing on clean layouts, modern styling, and the message “Give water another life.”',
+    image: 'Cirqua.png',
+    techStack: ['HTML', 'CSS', 'JavaScript'],
+    demoUrl: 'https://cirqua-systems.vercel.app/',
+    githubUrl: 'https://github.com/vinitha3031/cirqua-systems',
+  },
+
+  {
+    title: 'Traviator',
+    description:
+      'Created a premium travel website featuring an interactive 3D globe, location markers, smooth animations, and ambient audio controls as part of a timed design assignment.',
+    image: 'Traviator.png',
+    techStack: ['HTML', 'CSS', 'JavaScript', 'Three.js'],
+    demoUrl: 'https://traviator-premium-redesign.vercel.app/',
+    githubUrl: 'https://github.com/vinitha3031/traviator-premium-redesign',
+  },
+
 
 ]
